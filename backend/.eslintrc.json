@@ -42,9 +42,10 @@
             }
         ],
         "camelcase":[
-            "error"
+            "error",
             {
-                "properties": "never"
+                "properties": "never",
+                "ignoreDestructuring": true
             }
         ]
     }
