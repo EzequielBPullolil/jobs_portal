@@ -1,4 +1,5 @@
 {
+    "plugins":["filenames-simple"],
     "env": {
         "browser": true,
         "es2021": true,
@@ -28,6 +29,17 @@
         "semi": [
             "error",
             "never"
+        ],
+        "eqeqeq":[
+            "error",
+            "always"
+        ],
+        "filenames-simple/naming-convention":[
+            "error",
+            {
+                "rule": "snake_case",
+                "excepts": ["index"]
+            }
         ]
     }
 }
