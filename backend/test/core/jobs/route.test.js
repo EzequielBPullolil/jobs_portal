@@ -1,3 +1,4 @@
+const {validate:validateUUID} = require('uuid')
 const app = require('src/app')
 const request = require('supertest')
 describe('Jobs routes test', () => {
@@ -17,6 +18,8 @@ describe('Jobs routes test', () => {
 
         expect(status).toBe('Job posted')
         expect(job).toHaveProperty('title', job_suject_params.title)
+        expect(job).toHaveProperty('id')
+        expect(validateUUID(job.id)).toBe(true)
 
         done() //
       })
