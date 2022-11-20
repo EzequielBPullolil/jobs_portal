@@ -40,6 +40,12 @@
                 "rule": "snake_case",
                 "excepts": ["index"]
             }
+        ],
+        "camelcase":[
+            "error"
+            {
+                "properties": "never"
+            }
         ]
     }
 }
