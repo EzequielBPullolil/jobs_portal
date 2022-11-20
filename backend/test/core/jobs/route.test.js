@@ -21,7 +21,24 @@ describe('Jobs routes test', () => {
         expect(job).toHaveProperty('id')
         expect(validateUUID(job.id)).toBe(true)
 
+        job_suject_params.id = job.id
         done() //
       })
+  })
+  describe('jobs/:id route tests', () => {
+    test('GET (Detail post)', done => {
+      request(app)
+        .get(`/jobs/${job_suject_params.id}`)
+        .expect('Content-type', /json/)
+        .then(response=>{
+          expect(response.statusCode).toBe(200)
+          expect(response.body.job).toBeDefined()
+
+          const { title } = response.body.job
+
+          expect(title).toBe(job_suject_params.title)
+          done()
+        })
+    })
   })
 })
