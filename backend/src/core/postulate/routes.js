@@ -1,9 +1,11 @@
 const postulatesRouter = require('express').Router()
-
+const {CreateApplication} = require('./services/index')
 postulatesRouter.route('/:jobId')
-  .post((req,res)=>{
+  .post(async (req,res)=>{
+    const apply = await CreateApplication(req.body)
     return res.status(201).json({
-      status: 'successful application'
+      status: 'successful application',
+      apply
     })
   })
   .get((req,res)=>{
