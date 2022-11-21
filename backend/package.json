@@ -12,7 +12,8 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "test:jobs": "./scripts/test.sh --verbose test/core/jobs"
+    "test:jobs": "./scripts/test.sh --verbose test/core/jobs",
+    "dev": "./scripts/dev.sh"
   },
   "devDependencies": {
     "eslint": "^8.28.0",
