@@ -9,8 +9,10 @@ app.use(cors())
 
 
 //Routes
-const jobsRoutes = require('src/core/jobs/routes.js')
+const jobsRoutes = require('src/core/jobs/routes')
 app.use('/jobs', jobsRoutes)
 
+const postulatesRoutes = require('src/core/postulate/routes')
+app.use('/postulates', postulatesRoutes)
 
 module.exports = app
