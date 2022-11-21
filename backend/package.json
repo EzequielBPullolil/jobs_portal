@@ -13,6 +13,7 @@
   },
   "scripts": {
     "test:jobs": "./scripts/test.sh --verbose test/core/jobs",
+    "test:users": "./scripts/test.sh --verbose test/core/users",
     "dev": "./scripts/dev.sh"
   },
   "devDependencies": {
