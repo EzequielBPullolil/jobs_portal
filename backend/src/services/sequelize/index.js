@@ -7,9 +7,11 @@ const dbConnection = new Sequelize(DATABASE_NAME, DATABASE_USER, DATABASE_PASSWO
   dialect: 'mysql'
 })
 const job = require('src/services/sequelize/models/jobs')(dbConnection, DataTypes)
+const postulate = require('src/services/sequelize/models/postulates')(dbConnection, DataTypes)
 
 
 module.exports = {
   sequelize: dbConnection,
-  JobModel: job
+  JobModel: job,
+  PostulateModel: postulate
 }
