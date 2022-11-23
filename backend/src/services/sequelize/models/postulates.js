@@ -13,9 +13,17 @@ module.exports = (sequelize, {STRING, TEXT})=>{
       type: TEXT,
       allowNull: false
     },
-    CV: {
+    cv: {
       type: STRING,
       allowNull: true
+    },
+    fk_jobs_id: {
+      type: STRING,
+      allowNull: false,
+      references: {
+        model: 'Jobs',
+        key: 'id'
+      }
     }
   },{
     timestamps: false
