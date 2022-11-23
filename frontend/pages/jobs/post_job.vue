@@ -7,17 +7,17 @@
         <div class="input-row">
           <label for="title">
             Title
-            <input id="title" :value="title" type="text" name="title" placeholder="Junior dev...">
+            <input id="title" v-model="title" type="text" name="title" placeholder="Junior dev...">
           </label>
           <label for="experience">
             Minimal experience
-            <input id="experience" :value="minimal_experience" type="number" min="0" name="minimal_experience">
+            <input id="experience" v-model="minimal_experience" type="number" min="0" name="minimal_experience">
           </label>
         </div>
         <div class="input-row">
           <label for="email">
             Email
-            <input id="email" :value="email" type="email" name="email">
+            <input id="email" v-model="email" type="email" name="email">
           </label>
         </div>
 
@@ -25,7 +25,7 @@
           <label class="description" for="description">
             Description:
           </label>
-          <textarea id="description" :value="description" class="post-description" name="description" />
+          <textarea id="description" v-model="description" class="post-description" name="description" />
         </section>
         <input type="submit" value="Post job">
       </form>
