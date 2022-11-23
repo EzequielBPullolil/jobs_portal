@@ -8,7 +8,7 @@ module.exports = async(jobId) => {
    */
 
 
-  const postulatesFindend = await PostulateModel.findAll({where: {fk_jobs_id: jobId}})
+  const postulatesFindend = await PostulateModel.findAll({where: {fk_jobs_id: jobId}, attributes:['id','email','message','cv']})
 
   return postulatesFindend
 }
