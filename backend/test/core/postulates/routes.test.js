@@ -1,16 +1,24 @@
 const request = require('supertest')
 const app = require('src/app')
+const { JobModel } = require('src/services/sequelize/index')
 
 describe('Postulates routes test', () => {
   describe('route /:jobId param test', () => {
     let jobId = 'nonCreatedJob'
     let postulateSend = {
-      user_id: 'fakeUserID',
       email: 'example@email.com',
-      job_id: jobId,
       message: 'Postulate message',
       cv: 'path/to/cv'
     }
+    beforeAll(async () => {
+      jobId = 'postulate_test_job'
+      await JobModel.create({
+        id: jobId,
+        title: 'a test job',
+        description: 'this job is for postulates route test ',
+        email: 'tata@email.com'
+      })
+    })
     test('POST (Apply job)', done => {
       request(app)
         .post(`/postulates/${jobId}`)
@@ -33,7 +41,7 @@ describe('Postulates routes test', () => {
           const { postulates } = body
 
           expect(postulates).toBeInstanceOf(Array)
-          expect(postulates.length > 1).toBe(true)
+          expect(postulates.length > 0).toBe(true)
 
           expect(postulates[0]).toMatchObject(postulateSend)
           done()
