@@ -1,18 +1,15 @@
-const {JobModel, PostulateModel} = require('src/services/sequelize/index')
-module.exports = async()=>{
+const { JobModel, PostulateModel, sequelize } = require('src/services/sequelize/index')
+module.exports = async () => {
   JobModel.hasMany(PostulateModel, {
-    foreignKey: {
-      name:'fk_jobs_id',
-      allowNull: false
-    }
+    foreignKey: 'fk_jobs_id'
   })
   PostulateModel.belongsTo(JobModel, {
-    foreignKey: {
-      name:'fk_jobs_id',
-      allowNull: false
-    }
+    foreignKey: 'fk_jobs_id',
+    as: 'job'
   })
+  await sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
+  await JobModel.sync({ force: true })
+  await PostulateModel.sync({ force: true })
+  await sequelize.query('SET FOREIGN_KEY_CHECKS = 1')
 
-  await JobModel.sync({force: true})
-  await PostulateModel.sync({force: true})
 }
