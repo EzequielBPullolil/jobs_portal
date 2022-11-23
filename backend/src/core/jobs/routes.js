@@ -12,6 +12,6 @@ jobsRouter.route('/')
 jobsRouter.route('/:id')
   .get(async(req,res)=>{
     const findedJob = await findJob(req.params.id)
-    return res.status(200).json({job: findedJob})
+    return res.status(200).json(findedJob)
   })
 module.exports = jobsRouter
