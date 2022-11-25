@@ -1,10 +1,9 @@
 <template>
   <div>
     <h1>Job detail</h1>
-
     <article>
       <header>
-        <h4>
+        <h4 class="job__title">
           {{ job.title }}
         </h4>
         <span>Minimal Experience: {{ job.minimal_experience }}</span>
@@ -16,7 +15,7 @@
       </section>
       <footer>
         email : <span>{{ job.email }}</span>
-        <a class="btn btn-green"> Postulate! </a>
+        <a class="btn btn-green" @click="redirectToPostulate"> Postulate! </a>
       </footer>
     </article>
   </div>
@@ -34,6 +33,11 @@ export default {
       .then((data) => {
         this.job = data
       })
+  },
+  methods: {
+    redirectToPostulate () {
+      this.$router.push(`/postulate/${this.$route.params.id}`)
+    }
   }
 }
 </script>
@@ -56,5 +60,10 @@ export default {
 .btn-green:hover {
   background-color: #285430;
   transition: background-color 200ms linear;
+}
+
+.job__title {
+  font-size: 40px;
+
 }
 </style>
