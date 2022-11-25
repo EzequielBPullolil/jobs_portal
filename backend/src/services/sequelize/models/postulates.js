@@ -13,7 +13,7 @@ module.exports = (sequelize, {STRING, TEXT})=>{
       type: TEXT,
       allowNull: false
     },
-    cv: {
+    cv_path: {
       type: STRING,
       allowNull: true
     },
