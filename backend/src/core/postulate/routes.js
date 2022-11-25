@@ -1,8 +1,12 @@
 const postulatesRouter = require('express').Router()
+//App services
 const {CreateApplication, ObtainPostulates} = require('./services/index')
+//Middlewares
+const UploadCv = require('./middlewares/upload_cv')
 postulatesRouter.route('/:jobId')
-  .post(async (req,res)=>{
+  .post(UploadCv, async (req,res)=>{
     try {
+      console.log('hi')
       const applicationParams = {
         jobId: req.params.jobId,
         ...req.body
