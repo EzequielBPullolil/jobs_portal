@@ -1,7 +1,7 @@
 const request = require('supertest')
 const app = require('src/app')
 const rootUsersRoute = '/users'
-
+const {validate: validateUUID} = require('uuid')
 
 
 describe('Users router test', () => {
@@ -16,12 +16,13 @@ describe('Users router test', () => {
         .post(rootUsersRoute)
         .send(usersFields)
         .then(({statusCode, body})=>{
+          const {status, user} = body
           expect(statusCode).toBe(201)
-          expect(body).toHaveProperty('status', 'user created')
+          expect(status).toBe('user created')
+          expect(validateUUID(user.id)).toBe(true)
 
           done()
         })
     })
   })
-
 })
