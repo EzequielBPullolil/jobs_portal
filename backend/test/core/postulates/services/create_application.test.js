@@ -27,13 +27,13 @@ describe('CreateApplication test', () => {
         cv_path: 'a_test_path'
       })).rejects.toThrow('Missing email')
     })
-    test('Missing cv_path', async () => {
+    test('Missing cvPath', async () => {
       expect.assertions(2)
       await expect(CreateApplication({
         email: 'example@email.com',
         message: 'a test message',
         jobId: jobId,
-        cv_path: ''
+        cvPath: ''
       })).rejects.toThrow('Missing cv_path')
       await expect(CreateApplication({
         email: 'example@email.com',
