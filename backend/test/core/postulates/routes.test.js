@@ -1,14 +1,14 @@
 const request = require('supertest')
 const app = require('src/app')
 const { JobModel } = require('src/services/sequelize/index')
-
+const path = require('path')
 describe('Postulates routes test', () => {
+  const cvPath = path.join(process.env.NODE_PATH, 'test/file_suject/cv.pdf')
   describe('route /:jobId param test', () => {
     let jobId = 'nonCreatedJob'
     let postulateSend = {
       email: 'example@email.com',
       message: 'Postulate message',
-      cv: 'path/to/cv'
     }
     beforeAll(async () => {
       jobId = 'postulate_test_job'
@@ -22,8 +22,12 @@ describe('Postulates routes test', () => {
     test('POST (Apply job)', done => {
       request(app)
         .post(`/postulates/${jobId}`)
-        .send(postulateSend)
-        .expect('Content-type', /json/)
+        .set({
+          'Content-Type': 'application/json',
+        })
+        .field('email', postulateSend.email)
+        .field('message', postulateSend.message)
+        .attach('cv', cvPath)
         .then(({ statusCode, body }) => {
           expect(statusCode).toBe(201)
           expect(body).toHaveProperty('status', 'successful application')
