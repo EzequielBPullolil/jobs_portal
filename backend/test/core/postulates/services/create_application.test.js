@@ -41,5 +41,19 @@ describe('CreateApplication test', () => {
         jobId: jobId,
       })).rejects.toThrow('Missing cvPath')
     })
+    test('Missing jobId', async () => {
+      expect.assertions(2)
+      await expect(CreateApplication({
+        email: 'example@email.com',
+        message: 'a test message',
+        jobId: '',
+        cvPath: 'path/to/cv'
+      })).rejects.toThrow('Missing jobId')
+      await expect(CreateApplication({
+        email: 'example@email.com',
+        message: 'a test message',
+        cvPath: 'path/to/cv'
+      })).rejects.toThrow('Missing jobId')
+    })
   })
 })
