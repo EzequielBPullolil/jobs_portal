@@ -10,7 +10,7 @@ describe('Users router test', () => {
     password: 'aMagistralPassword',
     email: 'example@test.com'
   }
-  describe('Root route test', () => {
+  describe('Root request test', () => {
     test('POST (create user) ', done => {
       request(app)
         .post(rootUsersRoute)
@@ -21,6 +21,19 @@ describe('Users router test', () => {
           expect(status).toBe('user created')
           expect(validateUUID(user.id)).toBe(true)
 
+          usersFields.id = user.id
+          done()
+        })
+    })
+  })
+  describe(':id param request test', () => {
+    test('should ', done => {
+      request(app)
+        .get(`${rootUsersRoute}/${usersFields.id}`)
+        .then(({statusCode, body })=>{
+          expect(statusCode).toBe(200)
+
+          expect(body).toHaveProperty('name', usersFields.name)
           done()
         })
     })
