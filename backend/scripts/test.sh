@@ -7,4 +7,4 @@ export DATABASE_PASSWORD=''
 export DATABASE_HOST='localhost'
 
 
-jest "$1" "$2"
+jest "$1" "$2" --forceExit --detectOpenHandles
