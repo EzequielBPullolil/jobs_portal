@@ -5,7 +5,8 @@ module.exports = async ({ user_id, email,  jobId, message, cvPath}) => {
    * Persit postulate and return they id, email, message and cv
    */
   if(!email || email === '' ) throw new Error('Missing email')
-  if(!cvPath || cvPath === '') throw new Error('Missing cv_path')
+  if(!cvPath || cvPath === '') throw new Error('Missing cvPath')
+  if(!jobId || jobId === '') throw new Error('Missing jobId')
   const id = uuidv4()
   await PostulateModel.create({id, email, fk_jobs_id: jobId, message, cv_path:cvPath})
   return {
