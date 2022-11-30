@@ -19,4 +19,6 @@ app.use('/jobs', jobsRoutes)
 const postulatesRoutes = require('src/core/postulate/routes')
 app.use('/postulates', postulatesRoutes)
 
+const usersRoutes = require('src/core/users/routes')
+app.use('/users', usersRoutes)
 module.exports = app
