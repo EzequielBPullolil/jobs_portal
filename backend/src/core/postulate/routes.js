@@ -9,7 +9,7 @@ postulatesRouter.route('/:jobId')
       console.log('hi')
       const applicationParams = {
         jobId: req.params.jobId,
-        cv_path: req.cv_path,
+        cvPath: req.cv_path,
         ...req.body
       }
       const apply = await CreateApplication(applicationParams)
