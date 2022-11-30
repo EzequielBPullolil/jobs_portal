@@ -34,12 +34,12 @@ describe('CreateApplication test', () => {
         message: 'a test message',
         jobId: jobId,
         cvPath: ''
-      })).rejects.toThrow('Missing cv_path')
+      })).rejects.toThrow('Missing cvPath')
       await expect(CreateApplication({
         email: 'example@email.com',
         message: 'a test message',
         jobId: jobId,
-      })).rejects.toThrow('Missing cv_path')
+      })).rejects.toThrow('Missing cvPath')
     })
   })
 })
