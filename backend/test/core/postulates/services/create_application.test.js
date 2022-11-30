@@ -12,7 +12,7 @@ describe('CreateApplication test', () => {
       minimal_experience: 0
     })
   })
-  describe('throw cases', () => {
+  describe('throw error cases', () => {
     test('Missing email throw error ', async () => {
       expect.assertions(2)
       await expect(CreateApplication({

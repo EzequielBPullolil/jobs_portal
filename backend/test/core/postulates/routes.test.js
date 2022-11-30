@@ -35,7 +35,7 @@ describe('Postulates routes test', () => {
         })
     })
 
-    test('GET (Show ', done => {
+    test('GET (Show job postulates)', done => {
       request(app)
         .get(`/postulates/${jobId}`)
         .expect('Content-type', /json/)
