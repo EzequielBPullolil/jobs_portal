@@ -11,7 +11,6 @@ postulatesRouter.route('/:jobId')
         jobId: req.params.jobId,
         ...req.body
       }
-      console.log(applicationParams)
       const apply = await CreateApplication(applicationParams)
       return res.status(201).json({
         status: 'successful application',
