@@ -6,7 +6,7 @@ module.exports = (file, jobId)=>{
    */
   try {
     const {data} = file
-    const fileName = 'CV-NOMBRE-APELLIDO'
+    const fileName = 'CV-NOMBRE-APELLIDO.pdf'
     const storageFolder = path.join(process.env.NODE_PATH, 'storage')
     const jobFolder = path.join(storageFolder, jobId)
     const postulatesFolder = path.join(jobFolder, 'postulates')
@@ -15,6 +15,8 @@ module.exports = (file, jobId)=>{
     if (!fs.existsSync(jobFolder)) fs.mkdirSync(jobFolder)
     if (!fs.existsSync(postulatesFolder)) fs.mkdirSync(postulatesFolder)
     fs.writeFileSync(cvPath, data)
+
+    return cvPath
   }catch(err){
     throw Error(err)
   }
