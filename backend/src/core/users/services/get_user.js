@@ -8,13 +8,14 @@ module.exports = async(id)=>{
    * @return {name, email}
    */
 
-  const {name, email} = await UserModel.findByPk(id, {
-    attributes: ['name', 'email']
+  const {name,last_name, email} = await UserModel.findByPk(id, {
+    attributes: ['name', 'last_name', 'email']
   })
 
   return {
     name,
-    email
+    email,
+    last_name
   }
 
 }
