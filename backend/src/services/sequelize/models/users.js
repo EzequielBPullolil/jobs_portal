@@ -9,6 +9,10 @@ module.exports = (sequelize, { STRING }) => {
       type: STRING,
       unique: true
     },
+    last_name: {
+      type: STRING,
+      allowNull: false
+    },
     email: {
       type: STRING,
       allowNull: false

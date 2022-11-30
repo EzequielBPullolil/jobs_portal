@@ -6,6 +6,7 @@ const {validate: validateUUID} = require('uuid')
 
 describe('Users router test', () => {
   const usersFields = {
+    last_name: 'a last name',
     name: 'exampleUserName',
     password: 'aMagistralPassword',
     email: 'example@test.com'
